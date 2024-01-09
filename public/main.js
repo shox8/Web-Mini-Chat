@@ -17,16 +17,19 @@ socket.on("readMessages", (data) => {
 socket.on("readNewMessage", (data) => {
   messages.push(data);
   drawer(messages);
-  if ("Notification" in window) {
-    if (Notification.permission === "granted") {
-      const notification = new Notification(data.from, {
-        body: data.msg,
-        vibrate: [200, 100, 200],
-      });
-      notification.addEventListener("click", () => {
-        window.open("https://miniwebchat.onrender.com");
-      });
-      setTimeout(() => notification.close(), 5 * 2000);
+  if (localStorage.getItem("username") !== data.from) {
+    if ("Notification" in window) {
+      Notification.requestPermission();
+      if (Notification.permission === "granted") {
+        const notification = new Notification(data.from, {
+          body: data.msg,
+          vibrate: [200, 100, 200],
+        });
+        notification.addEventListener("click", () => {
+          window.open("https://miniwebchat.onrender.com");
+        });
+        setTimeout(() => notification.close(), 5 * 2000);
+      }
     }
   }
 });

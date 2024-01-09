@@ -26,7 +26,7 @@ socket.on("readNewMessage", (data) => {
           vibrate: [200, 100, 200],
         });
         notification.addEventListener("click", () => {
-          window.open("https://miniwebchat.onrender.com");
+          window.open("https://webminichat.onrender.com");
         });
         setTimeout(() => notification.close(), 5 * 2000);
       }

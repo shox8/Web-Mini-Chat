@@ -34,7 +34,7 @@ button {
   height: calc(100% - 140px);
   border-top: 1px solid #333333;
   border-bottom: 1px solid #333333;
-  background: url(./assets/bg.gif);
+  background: url(/assets/bg.gif);
   display: flex;
   flex-wrap: wrap;
   align-content: start;
